@@ -6,6 +6,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("My Profile"),
+        backgroundColor: const Color(0xFFF9A825),
+      ),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -25,41 +29,41 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 20),
 
-                // Profile Picture
-                CircleAvatar(
+                // Profile Avatar
+                const CircleAvatar(
                   radius: 50,
-                  backgroundColor: const Color(0xFFF9A825),
-                  child: const Icon(
+                  backgroundColor: Color(0xFFF9A825),
+                  child: Icon(
                     Icons.person,
                     size: 50,
                     color: Colors.white,
                   ),
                 ),
 
-                const SizedBox(height: 12),
+                const SizedBox(height: 20),
 
                 const Text(
-                  'User Name',
+                  "User Name",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
 
-                const SizedBox(height: 4),
+                const SizedBox(height: 6),
 
                 const Text(
-                  'user@email.com',
+                  "user@email.com",
                   style: TextStyle(color: Colors.black54),
                 ),
 
                 const SizedBox(height: 30),
 
-                // Profile Options
-                _profileTile(Icons.edit, 'Edit Profile'),
-                _profileTile(Icons.star, 'My Skills'),
-                _profileTile(Icons.settings, 'Settings'),
-                _profileTile(Icons.logout, 'Logout'),
+                _profileTile(Icons.work, "My Skills"),
+                const SizedBox(height: 12),
+                _profileTile(Icons.settings, "Settings"),
+                const SizedBox(height: 12),
+                _profileTile(Icons.logout, "Logout"),
               ],
             ),
           ),
@@ -70,8 +74,7 @@ class ProfileScreen extends StatelessWidget {
 
   Widget _profileTile(IconData icon, String title) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 14),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -85,17 +88,14 @@ class ProfileScreen extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: const Color(0xFFF9A825)),
+          Icon(icon, color: Color(0xFFF9A825)),
           const SizedBox(width: 16),
           Text(
             title,
-            style: const TextStyle(fontSize: 16),
+            style: const TextStyle(fontWeight: FontWeight.w600),
           ),
-          const Spacer(),
-          const Icon(Icons.arrow_forward_ios, size: 16),
         ],
       ),
     );
   }
 }
-

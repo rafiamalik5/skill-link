@@ -41,22 +41,22 @@ class UserRoleScreen extends StatelessWidget {
 
                 const SizedBox(height: 40),
 
-                // Service Provider Card
+                // ✅ Service Provider Card
                 _roleCard(
+                  context: context,
                   icon: Icons.build,
                   title: 'I want to offer my skills',
                   subtitle: 'Create profile & get hired',
-                  onTap: () {},
                 ),
 
                 const SizedBox(height: 20),
 
-                // Client Card
+                // ✅ Client Card
                 _roleCard(
+                  context: context,
                   icon: Icons.search,
                   title: 'I want to hire skills',
                   subtitle: 'Find skilled professionals',
-                  onTap: () {},
                 ),
               ],
             ),
@@ -67,13 +67,16 @@ class UserRoleScreen extends StatelessWidget {
   }
 
   Widget _roleCard({
+    required BuildContext context,
     required IconData icon,
     required String title,
     required String subtitle,
-    required VoidCallback onTap,
   }) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        // ✅ Go to Skills Screen
+        Navigator.pushNamed(context, '/skills');
+      },
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(

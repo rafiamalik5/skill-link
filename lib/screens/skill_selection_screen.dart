@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_screen.dart';
 
 class SkillSelectionScreen extends StatelessWidget {
   const SkillSelectionScreen({super.key});
@@ -60,11 +61,19 @@ class SkillSelectionScreen extends StatelessWidget {
 
                 const SizedBox(height: 10),
 
-                // Continue Button
+                // ✅ Continue Button (NOW WORKING)
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // 👇 Move to Home Screen
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       'Continue',
                       style: TextStyle(fontSize: 16),

@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'profile_screen.dart';
+import 'job_post_screen.dart';
+import 'my_projects_screen.dart';
+import 'applied_projects_screen.dart';
+
+
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,10 +42,21 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    CircleAvatar(
-                      backgroundColor: const Color(0xFFF9A825),
-                      child: const Icon(Icons.person, color: Colors.white),
-                    ),
+                    GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ProfileScreen(),
+      ),
+    );
+  },
+  child: const CircleAvatar(
+    backgroundColor: Color(0xFFF9A825),
+    child: Icon(Icons.person, color: Colors.white),
+  ),
+),
+
                   ],
                 ),
 
@@ -62,8 +80,61 @@ class HomeScreen extends StatelessWidget {
 
                 const SizedBox(height: 30),
 
-                const Text(
-                  'Popular Skills',
+// 🔹 Post Job Button
+SizedBox(
+  width: double.infinity,
+  child: ElevatedButton(
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const JobPostScreen(),
+        ),
+      );
+    },
+    child: const Text("Post a Job"),
+  ),
+),
+
+const SizedBox(height: 15),
+
+// 🔹 My Projects Button
+SizedBox(
+  width: double.infinity,
+  child: OutlinedButton(
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const MyProjectsScreen(),
+        ),
+      );
+    },
+    child: const Text("My Projects"),
+  ),
+),
+const SizedBox(height: 15),
+
+SizedBox(
+  width: double.infinity,
+  child: OutlinedButton(
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const AppliedProjectsScreen(),
+        ),
+      );
+    },
+    child: const Text("Applied Projects"),
+  ),
+),
+
+const SizedBox(height: 30),
+
+const Text(
+  'Popular Skills',
+
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

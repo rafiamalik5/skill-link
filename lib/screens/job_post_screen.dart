@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'ai_skill_matcher.dart';
 
-class JobPostScreen extends StatelessWidget {
+class JobPostScreen extends StatefulWidget {
   const JobPostScreen({super.key});
+
+  @override
+  State<JobPostScreen> createState() => _JobPostScreenState();
+}
+
+class _JobPostScreenState extends State<JobPostScreen> {
+
+  final TextEditingController _descController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +57,11 @@ class JobPostScreen extends StatelessWidget {
 
                 const SizedBox(height: 16),
 
-                // Description
-                const TextField(
+                // ✅ UPDATED DESCRIPTION FIELD
+                TextField(
+                  controller: _descController,
                   maxLines: 4,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Project Description",
                     border: OutlineInputBorder(),
                   ),
@@ -81,14 +91,28 @@ class JobPostScreen extends StatelessWidget {
 
                 const SizedBox(height: 30),
 
-                // Post Button
+                // ✅ UPDATED POST BUTTON WITH AI
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Job Posted Successfully!"),
+                      final suggestion =
+                          AISkillMatcher.suggestSkill(
+                              _descController.text);
+
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text("AI Skill Suggestion"),
+                          content: Text(
+                              "Suggested Freelancer Type:\n\n$suggestion"),
+                          actions: [
+                            TextButton(
+                              onPressed: () =>
+                                  Navigator.pop(context),
+                              child: const Text("OK"),
+                            )
+                          ],
                         ),
                       );
                     },

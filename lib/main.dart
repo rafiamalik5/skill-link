@@ -7,6 +7,7 @@ import 'screens/user_role_screen.dart';
 import 'screens/skill_selection_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/profile_screen.dart';
+import 'main_navigation_screen.dart';
 
 void main() {
   runApp(const SkillLinkApp());

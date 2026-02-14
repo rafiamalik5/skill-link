@@ -9,10 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 
-Future<void> main() async {
- // testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+void main() {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    var tester;
     await tester.pumpWidget(const MyApp() as Widget);
 
     // Verify that our counter starts at 0.
